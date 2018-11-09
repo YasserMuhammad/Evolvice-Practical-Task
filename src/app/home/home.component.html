@@ -1,0 +1,5 @@
+<div class="message-body" *ngIf="lastMessage">
+        <span class="message-time">{{lastMessage.createdDate}}</span>
+        <span class="sender-name">{{lastMessage.createdByUserName}}</span>
+        <p class="message-text">{{lastMessage.messageText}}</p>
+    </div>

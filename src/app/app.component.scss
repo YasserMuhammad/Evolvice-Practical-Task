@@ -1,0 +1,48 @@
+@import '../assets/styles/variables.scss';
+
+.container{
+    height: 100%;
+    overflow: hidden;
+}
+
+.app-header{
+    height: 50px;
+    background-color: $ev-section-background-color;
+    border-bottom: 1px solid $ev-section-border-color;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    color: #3c3c3c;
+    i{
+        margin: 0px 10px;   
+    }
+}
+
+.app-body{
+    height: calc(100% - 115px);
+    padding: 5px 0px;
+}
+
+.app-tabs{
+    height: 60px;
+    display: flex;
+    border-top: 1px solid $ev-section-border-color;
+    background-color: $ev-section-background-color;
+    .tab{
+        text-align: center;
+        width: 100%;
+        padding: 4px;
+        color: #3c3c3c;
+        &.active-tab{
+            color: #488aff;
+        }
+        .tab-icon{
+            width: 100%;
+            font-size: 22px;
+        }
+        .tab-name{
+            margin: 0;
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+@import '../../assets/styles/variables.scss';
+
+.message-body {
+    border: 2px solid $ev-msg-border-color;
+    background-color: $ev-msg-background-color;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    width: 90%;
+    &.my-message{
+        float: right;
+    }
+    .message-time {
+        float: right;
+        color: $ev-msg-label-color;
+    }
+    
+    .sender-name {
+        float: left;
+        color: $ev-msg-label-color;
+    }
+    
+    .message-text{
+        margin: 0px;
+        width: 100%;
+        display: flex;
+    }
+
+    
+}

@@ -1,0 +1,34 @@
+[
+    {
+        "id" : 1,
+        "messageText" : "Hi Yasser",
+        "createdDate" : "December 17, 1995",
+        "modifiedDate" : "December 17, 1995",
+        "createdByUserId" : 1,
+        "createdByUserName" : "Ahmed"
+    },
+    {
+        "id" : 2,
+        "messageText" : "Hi Ahmed",
+        "createdDate" : "December 17, 1995",
+        "modifiedDate" : "December 17, 1995",
+        "createdByUserId" : 2,
+        "createdByUserName" : "Yasser"
+    },
+    {
+        "id" : 3,
+        "messageText" : "Lets go out today",
+        "createdDate" : "December 17, 1995",
+        "modifiedDate" : "December 17, 1995",
+        "createdByUserId" : 1,
+        "createdByUserName" : "Ahmed"
+    },
+    {
+        "id" : 2,
+        "messageText" : "Sweet! So, what do you wanna do today?",
+        "createdDate" : "December 17, 1995",
+        "modifiedDate" : "December 17, 1995",
+        "createdByUserId" : 2,
+        "createdByUserName" : "Yasser"
+    }
+]
