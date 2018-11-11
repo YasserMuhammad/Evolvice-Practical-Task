@@ -1,27 +1,21 @@
 # EvolvicePracticalTask
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
+This project was a task for Evolvice GmbH.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` to run angular-cli server . Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Project Structure 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This project has 3 Main Components Home - Map - Chat 
 
-## Build
+- [Home](https://github.com/YasserMuhammad/Evolvice-Practical-Task/tree/master/src/app/home) Component shows the last sent message.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- [Map](https://github.com/YasserMuhammad/Evolvice-Practical-Task/tree/master/src/app/map) Component is a wrapper for [Angular Google Maps](https://angular-maps.com/) it shows a map with 2 Markers.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- [Chat](https://github.com/YasserMuhammad/Evolvice-Practical-Task/tree/master/src/app/chat)  Component is a offline Chat room that can add new messages - Search messages - and save all Messages to LocalStorage for future use.
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Email: myasser612@gmail.com
