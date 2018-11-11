@@ -55,15 +55,15 @@ export class ChatService {
   getMessages(pageNumber: number, searchKey?: string) : Message[]{
     var msgs;
 
-    // Set Array Size at First request
-    if(pageNumber === 0){
-      this.messagesOriginalSize = this.messagesList.getValue().length -1 ;
-    }
-
     if(searchKey && searchKey != ''){
       msgs = this.messagesList.getValue().filter(msg => msg.messageText.includes(searchKey))
     }else{
       msgs = this.messagesList.getValue();
+    }
+
+     // Set Array Size at First request
+     if(pageNumber === 0){
+      this.messagesOriginalSize = msgs.length -1 ;
     }
 
     // check if getting last messages
