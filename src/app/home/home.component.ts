@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(private chatService: ChatService) { }
 
   ngOnInit() {
-    this.lastMessage = this.chatService.lastMessage();
+    this.lastMessage = this.chatService.getLastMessage();
   }
 
 }
