@@ -3,13 +3,15 @@
       <input type="text" class="search-input" [(ngModel)]="searchKey" name="search">
       <button class="search-button" (click)="searchMessages(searchKey)">Search</button>
   </div>
+  <label class="new-message"  *ngIf="switchButtons == false" (click)="getNewMessages()">Load more Messages</label>
+  <label class="new-message" *ngIf="switchButtons == true">No more Messages</label>
+
     <div class="message-body" *ngFor="let message of messageList" 
     [ngClass]="{'my-message': message.createdByUserId == currentUserID}">
         <span class="message-time">{{message.createdDate}}</span>
         <span class="sender-name">{{message.createdByUserName}}</span>
         <p class="message-text">{{message.messageText}}</p>
     </div>
-    <label class="new-message" (click)="getNewMessages()">Load more Messages</label>
 
     <div class="input-area">
         <input #sendMessage type="text" [(ngModel)]="inputMessage" name="message">
