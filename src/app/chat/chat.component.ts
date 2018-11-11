@@ -23,6 +23,11 @@ export class ChatComponent implements OnInit {
   /////
 
   /**
+   * Switch between load message and no more message
+   */
+  switchButtons: boolean = false;
+
+  /**
    * current Page Number
    */
   pageNumber:number = 0;
@@ -42,7 +47,6 @@ export class ChatComponent implements OnInit {
       this.messageList = this.chatService.getMessages(this.pageNumber);
     } else {
       res.then(_ => {
-
         this.messageList = this.chatService.getMessages(this.pageNumber);
       });
     }
@@ -55,7 +59,12 @@ export class ChatComponent implements OnInit {
   searchMessages(searchKey){
     this.messageList = this.chatService.getMessages(0,searchKey)
   }
+  
 
+  /**
+   * Push message to the service
+   * @param inputMessage Value from input field
+   */
   sentMessage(inputMessage){
     if(this.sendMessageInput.nativeElement.value != ''){
       let msgObject = {
@@ -63,18 +72,23 @@ export class ChatComponent implements OnInit {
         createdByUserId : this.currentUserID,
         createdByUserName : this.currentUserName
       }
-      this.chatService.sentMessage(msgObject);
+      this.messageList.push(this.chatService.sentMessage(msgObject));
       this.sendMessageInput.nativeElement.value = '';
     }
   }
 
-
+  /**
+   * Get the next page (5 new messages) from Service
+   */
   getNewMessages(){
     this.pageNumber += 1;
-    this.messageList = this.messageList.concat(this.chatService.getMessages(this.pageNumber))
+    this.messageList = this.chatService.getMessages(this.pageNumber).concat(this.messageList);
+    if(this.chatService.getMessages(this.pageNumber).length < 5){
+      this.switchButtons = true;
+    }
   }
 
   ngOnDestroy(){
-    this.chatService.sendMessages();
+    this.chatService.saveMessagesToStorage();
   }
 }
