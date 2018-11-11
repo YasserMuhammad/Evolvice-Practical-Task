@@ -16,6 +16,7 @@ export class ChatService {
    */
   messagesList = new BehaviorSubject<Message[]>([]);
 
+  messagesOriginalSize: number ;
   constructor(private http: HttpClient) {
 
     /**
@@ -43,15 +44,34 @@ export class ChatService {
     }
   } 
 
+
+  /**
+   * 
+   * @param pageNumber number - Number of the next page
+   * @param searchKey  string 
+   * 
+   * @returns sliced Array of Messages
+   */
   getMessages(pageNumber: number, searchKey?: string) : Message[]{
     var msgs;
+
+    // Set Array Size at First request
+    if(pageNumber === 0){
+      this.messagesOriginalSize = this.messagesList.getValue().length -1 ;
+    }
 
     if(searchKey && searchKey != ''){
       msgs = this.messagesList.getValue().filter(msg => msg.messageText.includes(searchKey))
     }else{
       msgs = this.messagesList.getValue();
     }
-    return msgs.slice(pageNumber*5, (pageNumber+1)*5);
+
+    // check if getting last messages
+    if((this.messagesOriginalSize - (pageNumber * 5) - 4) < 0){
+      return msgs.slice(0, this.messagesOriginalSize - (pageNumber * 5) + 1);
+    } else {
+      return msgs.slice(this.messagesOriginalSize - (pageNumber * 5) - 4, this.messagesOriginalSize - (pageNumber * 5) + 1);
+    }
    }
 
    /**
@@ -60,15 +80,18 @@ export class ChatService {
     */
    sentMessage(message){
      let msgdate =  this.generateMessageTime();
-     this.messagesList.getValue().push({
+     let newMessage = {
       id : 2,
       messageText : message.messageText,
       createdDate : msgdate,
       modifiedDate : msgdate,
       createdByUserId : message.createdByUserId,
       createdByUserName : message.createdByUserName
+     }
 
-     })
+     // Update Array to add message to component
+     this.messagesList.getValue().push(newMessage);
+     return newMessage;
    }
 
    /**
@@ -82,14 +105,14 @@ export class ChatService {
    /**
     * add new message to localStorage
     */
-   sendMessages() {
+   saveMessagesToStorage() {
      localStorage.setItem('evolvice-message-list', JSON.stringify(this.messagesList.getValue()))
   }
 
   /**
    * get the last sent message
    */
-  lastMessage(){
+  getLastMessage(){
     return this.messagesList.getValue()[this.messagesList.getValue().length -1];
   }
 }
